@@ -1,0 +1,9 @@
+﻿  LowPassFilter.cpp
+c:\users\lavanya\desktop\datastructures\lowpassfilter\lowpassfilter\lowpassfilter.cpp(10): warning C4005: 'BUFSIZ': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(18): note: see previous definition of 'BUFSIZ'
+c:\users\lavanya\desktop\datastructures\lowpassfilter\lowpassfilter\lowpassfilter.cpp(46): warning C4101: 'l': unreferenced local variable
+c:\users\lavanya\desktop\datastructures\lowpassfilter\lowpassfilter\lowpassfilter.cpp(75): warning C4101: 'k': unreferenced local variable
+c:\users\lavanya\desktop\datastructures\lowpassfilter\lowpassfilter\lowpassfilter.cpp(75): warning C4101: 'l': unreferenced local variable
+c:\users\lavanya\desktop\datastructures\lowpassfilter\lowpassfilter\lowpassfilter.cpp(75): warning C4101: 'j': unreferenced local variable
+c:\users\lavanya\desktop\datastructures\lowpassfilter\lowpassfilter\lowpassfilter.cpp(75): warning C4101: 'i': unreferenced local variable
+  LowPassFilter.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\LowPassFilter\Debug\LowPassFilter.exe
