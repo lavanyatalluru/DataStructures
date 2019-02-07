@@ -1,31 +1,92 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reversal_linkedlist", "reversal_linkedlist\reversal_linkedlist.vcxproj", "{00504881-F1E7-495A-95DE-FB10C47B4F29}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{00504881-F1E7-495A-95DE-FB10C47B4F29}.Debug|x64.ActiveCfg = Debug|x64
-		{00504881-F1E7-495A-95DE-FB10C47B4F29}.Debug|x64.Build.0 = Debug|x64
-		{00504881-F1E7-495A-95DE-FB10C47B4F29}.Debug|x86.ActiveCfg = Debug|Win32
-		{00504881-F1E7-495A-95DE-FB10C47B4F29}.Debug|x86.Build.0 = Debug|Win32
-		{00504881-F1E7-495A-95DE-FB10C47B4F29}.Release|x64.ActiveCfg = Release|x64
-		{00504881-F1E7-495A-95DE-FB10C47B4F29}.Release|x64.Build.0 = Release|x64
-		{00504881-F1E7-495A-95DE-FB10C47B4F29}.Release|x86.ActiveCfg = Release|Win32
-		{00504881-F1E7-495A-95DE-FB10C47B4F29}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {82F2BFC5-6EFA-4AC2-A897-66BB5319E443}
-	EndGlobalSection
-EndGlobal
+// reversal_linkedlist.cpp : Defines the entry point for the console application.
+//
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+	int data;
+	struct Node *next;
+};
+struct Node* head;
+
+void create_linkedlist(int n)
+{
+	int i;
+	struct Node *new_node, *prev;
+	printf("Enter elements");
+	head = (struct Node*)malloc(sizeof(struct Node));
+	scanf_s("%d", &head->data);
+	prev = head;
+	for (i = 0; i < n-1; i++)
+	{
+		new_node = (struct Node*)malloc(sizeof(struct Node));
+		scanf_s("%d", &new_node->data);
+		prev->next = new_node;
+		new_node->next = NULL;
+		prev = new_node;
+	}
+}
+
+void display()
+{
+	struct Node* temp;
+	temp = head;
+	while (temp != NULL)
+	{
+		printf("%d ", temp->data);
+		temp = temp->next;
+	}
+}
+
+void reverse_list()
+{
+	struct Node *temp, *prev, *current;
+	prev = head;
+	current = prev->next;
+	prev->next = NULL;
+	while (current != NULL)
+	{
+		temp = current->next;
+		current->next = prev;
+		prev = current;
+		current = temp;
+	}
+	head = prev;
+}
+
+
+void reverse_list_recursion(struct Node *p)
+{
+	struct Node *q;
+	if (p->next == NULL)
+	{
+		head = p;
+		return;
+	}
+	reverse_list_recursion(p->next);
+	q = p->next;
+	q->next = p;
+	p->next = NULL;
+};
+
+int main()
+{
+	int n, i, j;
+	printf("Enter number of elements in linkedlist");
+	scanf_s("%d", &n);
+	create_linkedlist(n);
+	printf("The elements entered in linkedlist are ");
+	display();
+	reverse_list();
+	printf("\nThe reversed linkedlist is ");
+	display();
+	reverse_list_recursion(head);
+	printf("\nThe reversed linkedlist is (recursion) ");
+	display();
+	getchar();
+    return 0;
+}
+
+
