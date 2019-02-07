@@ -1,0 +1,4 @@
+﻿  stack_using_linkedlist.cpp
+c:\users\lavanya\desktop\datastructures\stack_using_linkedlist\stack_using_linkedlist\stack_using_linkedlist.cpp(53): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'int *'
+c:\users\lavanya\desktop\datastructures\stack_using_linkedlist\stack_using_linkedlist\stack_using_linkedlist.cpp(54): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'int *'
+  stack_using_linkedlist.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\stack_using_linkedlist\Debug\stack_using_linkedlist.exe
