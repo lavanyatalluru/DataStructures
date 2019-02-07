@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  linkedlist.cpp
+c:\users\lavanya\desktop\datastructures\linkedlist\linkedlist\linkedlist.cpp(52): warning C4101: 'n': unreferenced local variable
+c:\users\lavanya\desktop\datastructures\linkedlist\linkedlist\linkedlist.cpp(70): warning C4101: 'n': unreferenced local variable
+c:\users\lavanya\desktop\datastructures\linkedlist\linkedlist\linkedlist.cpp(115): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'node *'
+c:\users\lavanya\desktop\datastructures\linkedlist\linkedlist\linkedlist.cpp(137): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'int *'
+c:\users\lavanya\desktop\datastructures\linkedlist\linkedlist\linkedlist.cpp(137): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 3 has type 'node *'
+  linkedlist.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\linkedlist\Debug\linkedlist.exe
