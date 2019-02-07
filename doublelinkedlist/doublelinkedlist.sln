@@ -1,4 +1,3 @@
-﻿
 // doublelinkedlist.cpp : Defines the entry point for the console application.
 //
 
@@ -96,6 +95,7 @@ int main()
 	int n, i, e, h;
 	printf("number of elements:");
 	scanf_s("%d", &n);
+	printf("Enter Elements");
 	head = NULL;
 	for (i = 0; i < n; i++)
 	{
@@ -123,26 +123,31 @@ int main()
 		printf("%d ", temp->data);
 		temp = temp->next;
 	}
-	//scanf_s("%d", &n);
 
-	printf("\n1.add at beginning, 2.add at the end, 3.add a node in middle, 4.delete a node");
-	scanf_s("%d", &e);
-	switch (e)
+	do
 	{
-	case 1: head = add_begin(head);
-		break;
-	case 2:add_end(head);
-		break;
-	case 3:add_middle(head);
-		break;
-	case 4:head = delete_node(head);
-		break;
-	default:printf("Error");
-	}
+		printf("\n1.add at beginning, 2.add at the end, 3.add a node in middle, 4.delete a node, 5.Exit");
+		scanf_s("%d", &e);
+		switch (e)
+		{
+		case 1: head = add_begin(head);
+			break;
+		case 2:add_end(head);
+			break;
+		case 3:add_middle(head);
+			break;
+		case 4:head = delete_node(head);
+			break;
+		case 5:printf("Done");
+			break;
+		default:printf("Error");
+		}
+	} while (e != 5);
 	temp = head;
 	printf("\nData after entering is ");
 	while (temp != NULL)
 	{
+		printf("%d ", temp->data);
 		temp = temp->next;
 	}
 	getchar();
