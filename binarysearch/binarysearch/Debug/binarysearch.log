@@ -1,0 +1,5 @@
+﻿  binarysearch.cpp
+c:\users\lavanya\desktop\datastructures\binarysearch\binarysearch\binarysearch.cpp(44): warning C4101: 'j': unreferenced local variable
+c:\users\lavanya\desktop\datastructures\binarysearch\binarysearch\binarysearch.cpp(44): warning C4101: 'temp': unreferenced local variable
+  binarysearch.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\binarysearch\Debug\binarysearch.exe
+  binarysearch.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\binarysearch\Debug\binarysearch.pdb (Partial PDB)

@@ -1,0 +1,60 @@
+// binarysearch.cpp : Defines the entry point for the console application.
+//
+
+#include<stdio.h>
+
+void order(int *a,int n)
+{
+	int i, j, temp;
+	for (i = 0; i < n; i++)
+		for (j = i; j < n; j++)
+			if (a[i] > a[j])
+			{
+				temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+			}
+}
+
+void binary_search(int *a, int x,int n)
+{
+	int mid;
+	mid = (n-1)/2;
+	printf("\nIndex of mid is %d and element is %d ", mid,a[mid]);
+	if (x == a[mid])
+	{
+		printf("\nNumber found");
+		return;
+	}
+	else if (x < a[mid] && mid > 0)
+	{
+		binary_search(&a[0], x, mid);
+	}
+	else if (x > a[mid] && mid > 0)
+		binary_search(&a[mid+1], x, (n-mid-1));
+	else
+	{
+		printf("\nNumber not found");
+		return;
+	}
+}
+
+int main()
+{
+	int i,j,n,a[10],temp,x;
+	printf("Enter no of elements");
+	scanf_s("%d", &n);
+	printf("Enter elements");
+	for (i = 0; i < n; i++)
+		scanf_s("%d", &a[i]);
+	printf("Arranging in ascending order ");
+	order(a,n);
+	for (i = 0; i < n; i++)
+		printf("%d ", a[i]);
+	printf("\nEnter an element that should be searched");
+	scanf_s("%d", &x);
+	binary_search(a,x,n);
+	scanf_s("%d", &x);
+    return 0;
+}
+
