@@ -1,0 +1,4 @@
+﻿  reversestring.cpp
+c:\users\lavanya\desktop\datastructures\reverse_string\reverse_string\reversestring.cpp(15): warning C4013: 'gets' undefined; assuming extern returning int
+  reverse_string.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\reverse_string\Debug\reverse_string.exe
+  reverse_string.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\reverse_string\Debug\reverse_string.pdb (Partial PDB)
