@@ -1,0 +1,10 @@
+﻿  mergesort.cpp
+c:\users\lavanya\desktop\datastructures\mergesort\mergesort\mergesort.cpp(50): warning C4047: 'function': 'int *' differs in levels of indirection from 'int (*)[512]'
+c:\users\lavanya\desktop\datastructures\mergesort\mergesort\mergesort.cpp(50): warning C4024: 'merge': different types for formal and actual parameter 1
+c:\users\lavanya\desktop\datastructures\mergesort\mergesort\mergesort.cpp(51): warning C4047: 'function': 'int *' differs in levels of indirection from 'int (*)[512]'
+c:\users\lavanya\desktop\datastructures\mergesort\mergesort\mergesort.cpp(51): warning C4024: 'merge': different types for formal and actual parameter 1
+c:\users\lavanya\desktop\datastructures\mergesort\mergesort\mergesort.cpp(52): warning C4047: 'function': 'int *' differs in levels of indirection from 'int (*)[512]'
+c:\users\lavanya\desktop\datastructures\mergesort\mergesort\mergesort.cpp(52): warning C4024: 'merge_sort': different types for formal and actual parameter 1
+c:\users\lavanya\desktop\datastructures\mergesort\mergesort\mergesort.cpp(52): warning C4024: 'merge_sort': different types for formal and actual parameter 2
+  mergesort.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\mergesort\Debug\mergesort.exe
+  mergesort.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\mergesort\Debug\mergesort.pdb (Partial PDB)
