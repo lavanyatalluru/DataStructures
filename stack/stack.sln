@@ -1,31 +1,84 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack", "stack\stack.vcxproj", "{DC9EA00E-A92B-4D4D-AE44-9A7D672C0F40}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DC9EA00E-A92B-4D4D-AE44-9A7D672C0F40}.Debug|x64.ActiveCfg = Debug|x64
-		{DC9EA00E-A92B-4D4D-AE44-9A7D672C0F40}.Debug|x64.Build.0 = Debug|x64
-		{DC9EA00E-A92B-4D4D-AE44-9A7D672C0F40}.Debug|x86.ActiveCfg = Debug|Win32
-		{DC9EA00E-A92B-4D4D-AE44-9A7D672C0F40}.Debug|x86.Build.0 = Debug|Win32
-		{DC9EA00E-A92B-4D4D-AE44-9A7D672C0F40}.Release|x64.ActiveCfg = Release|x64
-		{DC9EA00E-A92B-4D4D-AE44-9A7D672C0F40}.Release|x64.Build.0 = Release|x64
-		{DC9EA00E-A92B-4D4D-AE44-9A7D672C0F40}.Release|x86.ActiveCfg = Release|Win32
-		{DC9EA00E-A92B-4D4D-AE44-9A7D672C0F40}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7E7F9AE9-F0E2-4341-B944-52F9277322B5}
-	EndGlobalSection
-EndGlobal
+// stack.cpp : Defines the entry point for the console application.
+//
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct stack
+{
+	int arr[5];
+	int top;
+}s;
+
+void init(struct stack *st)
+{
+	st->top = -1;
+}
+void push(struct stack *st)
+{
+	int n;
+	if (st->top == 4)
+		printf("stack is full\n");
+	else
+	{
+		st->top++;
+		printf("Enter number to be stacked");
+		scanf_s("%d", &n);
+		st->arr[st->top] = n;
+	}
+}
+
+void pop(struct stack *st)
+{
+	int num;
+	if (st->top == -1)
+		printf("stack is empty\n");
+	else
+	{
+		num = st->arr[st->top];
+		printf("deleted element is %d \n", num);
+		st->top--;
+	}
+
+}
+
+void display(struct stack *st)
+{
+	int i;
+	if (st->top == -1)
+		printf("stack is empty");
+	else
+	{
+		printf("\nThe elements in the stack are ");
+			for (i = 0; i <= st->top; i++)
+				printf("%d ", st->arr[i]);
+	}
+
+}
+
+int main()
+{
+	int n;
+	struct stack *st=&s;
+	init(st);
+	do
+	{
+		printf("1.push,2.pop,3.display,4.exit");
+		scanf_s("%d", &n);
+		switch (n)
+		{
+		case 1: push(st);
+			break;
+		case 2: pop(st);
+			break;
+		case 3:display(st);
+			break;
+		case 4: printf("DONE BYE");
+			break;
+		default:printf("ERROR");
+		}
+	} while (n != 4);
+    getchar();
+    return 0;
+}
+
