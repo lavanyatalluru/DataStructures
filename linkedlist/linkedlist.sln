@@ -1,31 +1,142 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linkedlist", "linkedlist\linkedlist.vcxproj", "{78EF7CB4-A804-400E-97CE-995A43980694}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{78EF7CB4-A804-400E-97CE-995A43980694}.Debug|x64.ActiveCfg = Debug|x64
-		{78EF7CB4-A804-400E-97CE-995A43980694}.Debug|x64.Build.0 = Debug|x64
-		{78EF7CB4-A804-400E-97CE-995A43980694}.Debug|x86.ActiveCfg = Debug|Win32
-		{78EF7CB4-A804-400E-97CE-995A43980694}.Debug|x86.Build.0 = Debug|Win32
-		{78EF7CB4-A804-400E-97CE-995A43980694}.Release|x64.ActiveCfg = Release|x64
-		{78EF7CB4-A804-400E-97CE-995A43980694}.Release|x64.Build.0 = Release|x64
-		{78EF7CB4-A804-400E-97CE-995A43980694}.Release|x86.ActiveCfg = Release|Win32
-		{78EF7CB4-A804-400E-97CE-995A43980694}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D4F36BA3-20E7-4191-A1B6-B3A912FDDCE0}
-	EndGlobalSection
-EndGlobal
+// linkedlist.cpp : Defines the entry point for the console application.
+//
+
+// pointers.cpp : Defines the entry point for the console application.
+//
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node *next;
+}x;
+
+struct node *add_begin(struct node *head)
+{
+	//int n;
+	struct node *temp = &x, *newnode;
+	newnode = (node *)malloc(sizeof(struct node));
+	printf("Enter data");
+	scanf_s("%d", &newnode->data);
+	newnode->next = head;
+	head = newnode;
+	return(head);
+}
+struct node *delete_node(struct node *head)
+{
+	int n, i;
+	struct node *temp = &x;
+	printf("Enter the position of node that has to be deleted");
+	scanf_s("%d", &n);
+	temp = head;
+	if (n == 1)
+	{
+		temp = temp->next;
+		head = temp;
+	}
+	else
+	{
+		for (i = 0; i < n - 2; i++)
+		{
+			temp = temp->next;
+
+		}
+		temp->next = temp->next->next;
+	}
+	return(head);
+}
+
+void add_end(struct node *head)
+{
+	int n;
+	struct node *temp = &x, *newnode;
+	newnode = (node *)malloc(sizeof(struct node));
+	printf("Enter data");
+	scanf_s("%d", &newnode->data);
+	newnode->next = NULL;
+	//newnode->data = n;
+	temp = head;
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+	temp->next = newnode;
+	//temp->data = n;
+}
+
+void add_middle(struct node *head)
+{
+	int n, pos, i;
+	struct node *temp = &x, *newnode;
+	newnode = (node *)malloc(sizeof(struct node));
+	printf("Enter the pos of data");
+	scanf_s("%d", &pos);
+	printf("Enter data");
+	scanf_s("%d", &newnode->data);
+	temp = head;
+	for (i = 0; i<pos - 2; i++)
+	{
+		temp = temp->next;
+	}
+	newnode->next = temp->next;
+	temp->next = newnode;
+}
+
+int main()
+{
+	struct node *temp = &x, *newnode, *head;
+	int n, i, e, h;
+	printf("number of elements:");
+	scanf_s("%d", &n);
+	head = NULL;
+	for (i = 0; i < n; i++)
+	{
+		newnode = (node *)malloc(sizeof(struct node));
+		scanf_s("%d", &newnode->data);
+		newnode->next = NULL;
+		if (head == NULL)
+		{
+			head = newnode; temp = head;
+		}
+		else
+		{
+			temp->next = newnode;
+			temp = temp->next;
+		}
+
+	}
+
+	temp = head;
+	while (temp != NULL)
+	{
+		printf("%d ", temp->data);
+		temp = temp->next;
+		printf("%d\n", temp);
+	}
+
+	printf("\n1.add at beginning, 2.add at the end, 3.add a node in middle, 4.delete a node");
+	scanf_s("%d", &e);
+	switch (e)
+	{
+	case 1: head = add_begin(head);
+		break;
+	case 2:add_end(head);
+		break;
+	case 3:add_middle(head);
+		break;
+	case 4:head = delete_node(head);
+		break;
+	default:printf("Error");
+	}
+	temp = head;
+	printf("\nData after entering is ");
+	while (temp != NULL)
+	{
+		temp = temp->next;
+	}
+	getchar();
+	return 0;
+}
+
