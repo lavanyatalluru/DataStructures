@@ -1,31 +1,73 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mergesort", "mergesort\mergesort.vcxproj", "{A6268974-1745-4196-AC56-23F3356A0CB0}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A6268974-1745-4196-AC56-23F3356A0CB0}.Debug|x64.ActiveCfg = Debug|x64
-		{A6268974-1745-4196-AC56-23F3356A0CB0}.Debug|x64.Build.0 = Debug|x64
-		{A6268974-1745-4196-AC56-23F3356A0CB0}.Debug|x86.ActiveCfg = Debug|Win32
-		{A6268974-1745-4196-AC56-23F3356A0CB0}.Debug|x86.Build.0 = Debug|Win32
-		{A6268974-1745-4196-AC56-23F3356A0CB0}.Release|x64.ActiveCfg = Release|x64
-		{A6268974-1745-4196-AC56-23F3356A0CB0}.Release|x64.Build.0 = Release|x64
-		{A6268974-1745-4196-AC56-23F3356A0CB0}.Release|x86.ActiveCfg = Release|Win32
-		{A6268974-1745-4196-AC56-23F3356A0CB0}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C9A830C5-EC60-4832-94D6-CB9A21AC8500}
-	EndGlobalSection
-EndGlobal
+#include<stdio.h>
+#include<limits.h>
+
+void merge_sort(int *left,int nl, int *right,int nr, int *a)
+{
+	int i = 0, j = 0, k = 0;
+	while (i < nl && j < nr)
+	{
+		if (left[i] <= right[j])
+		{
+			a[k] = left[i];
+			i++;
+		}
+		else
+		{
+			a[k] = right[j];
+			j++;
+		}
+		k++;
+	}
+	while (i < nl)
+	{
+		a[k] = left[i]; i++; k++;
+	}
+	while (j < nr)
+	{
+		a[k] = right[j]; j++; k++;
+	}
+
+}
+void merge(int *a,int l)
+{
+	int  mid, left[BUFSIZ], right[BUFSIZ], i,nl=0,nr=0;
+	if (l < 2)
+		return;
+	mid = l / 2;
+	for (i = 0; i < mid; i++)
+	{
+		left[i] = a[i]; nl++;
+		//printf("Add of element is %d\n", &a[i]);
+	}
+	for (i = mid; i < l; i++)
+	{
+		right[i] = a[i]; nr++;
+	}
+	merge(&left[0],nl);
+	merge(&right[mid],nr);
+	merge_sort(&left[0],nl, &right[mid], nr,&a[0]);
+
+}
+
+
+int main()
+{
+	int i, n,a[BUFSIZ];
+	printf("Enter no of elements in array");
+	scanf_s("%d", &n);
+	printf("Enter elements");
+	for (i = 0; i < n; i++)
+	{
+	scanf_s("%d", &a[i]);
+	}
+	merge(&a[0],n);
+	printf("Sorted elements are\n");
+	for (i = 0; i < n; i++)
+	{
+		printf("%d ", a[i]);
+	}
+	getchar();
+	return 0;
+}
+
+
