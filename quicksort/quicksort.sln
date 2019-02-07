@@ -1,31 +1,70 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quicksort", "quicksort\quicksort.vcxproj", "{D61E3737-122F-461D-B0B1-1AB6D671C897}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D61E3737-122F-461D-B0B1-1AB6D671C897}.Debug|x64.ActiveCfg = Debug|x64
-		{D61E3737-122F-461D-B0B1-1AB6D671C897}.Debug|x64.Build.0 = Debug|x64
-		{D61E3737-122F-461D-B0B1-1AB6D671C897}.Debug|x86.ActiveCfg = Debug|Win32
-		{D61E3737-122F-461D-B0B1-1AB6D671C897}.Debug|x86.Build.0 = Debug|Win32
-		{D61E3737-122F-461D-B0B1-1AB6D671C897}.Release|x64.ActiveCfg = Release|x64
-		{D61E3737-122F-461D-B0B1-1AB6D671C897}.Release|x64.Build.0 = Release|x64
-		{D61E3737-122F-461D-B0B1-1AB6D671C897}.Release|x86.ActiveCfg = Release|Win32
-		{D61E3737-122F-461D-B0B1-1AB6D671C897}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {88D7AEA9-5BC4-4AC7-935F-70D929BB7C5A}
-	EndGlobalSection
-EndGlobal
+
+#include<stdio.h>
+
+void exchange(int *a, int *b)
+{
+	int temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void quicksort(int *a, int n)
+{
+	int front, rear, key;
+	if (n < 0)
+	{   printf("Error");
+	    return;
+    }
+	if (n <= 1)
+		return;
+	if (n == 2)
+	{
+		if (a[0] > a[1])
+		{
+			exchange(&a[0], &a[1]);
+		}
+		
+	}
+	if (n >= 3)
+	{
+		front = 0; rear = n - 1;
+		key = a[n / 2];
+
+		while (front <= rear)
+		{
+			while (a[front] <= key && front <= rear)
+				front++;
+			while (a[rear] > key && front <= rear)
+				rear--;
+			if (front <= rear)
+			{
+				exchange(&a[front], &a[rear]);
+				front++;
+				rear--;
+			}
+
+		}
+		quicksort(&a[0], rear + 1);
+		quicksort(&a[front], n - front);
+	}
+
+}
+
+void main()
+{
+	int a[100], i, n, rn;
+	printf("Enter no of elements");
+	scanf_s("%d", &n);
+	printf("Enter elements");
+	for (i = 0; i < n; i++)
+	scanf_s("%d", &a[i]);
+	quicksort(&a[0], n);
+	printf("Sorted elements are ");
+	for (i = 0; i < n; i++)
+	printf("%d ", a[i]);
+	printf("done...!");
+	getch();
+}
+
+
