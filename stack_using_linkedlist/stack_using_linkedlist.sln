@@ -1,31 +1,73 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack_using_linkedlist", "stack_using_linkedlist\stack_using_linkedlist.vcxproj", "{AF58D537-7BA5-4C28-A447-175607583F79}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AF58D537-7BA5-4C28-A447-175607583F79}.Debug|x64.ActiveCfg = Debug|x64
-		{AF58D537-7BA5-4C28-A447-175607583F79}.Debug|x64.Build.0 = Debug|x64
-		{AF58D537-7BA5-4C28-A447-175607583F79}.Debug|x86.ActiveCfg = Debug|Win32
-		{AF58D537-7BA5-4C28-A447-175607583F79}.Debug|x86.Build.0 = Debug|Win32
-		{AF58D537-7BA5-4C28-A447-175607583F79}.Release|x64.ActiveCfg = Release|x64
-		{AF58D537-7BA5-4C28-A447-175607583F79}.Release|x64.Build.0 = Release|x64
-		{AF58D537-7BA5-4C28-A447-175607583F79}.Release|x86.ActiveCfg = Release|Win32
-		{AF58D537-7BA5-4C28-A447-175607583F79}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {250BFC7B-7742-4873-A88E-D9C26AE9AF80}
-	EndGlobalSection
-EndGlobal
+// stack_using_linkedlist.cpp : Defines the entry point for the console application.
+//
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+	int data;
+	struct Node* next;
+};
+
+struct Node *top;
+
+void push()
+{
+	struct Node *new_node = (struct Node*)malloc(sizeof(struct Node*));
+	printf("Enter element");
+	scanf_s("%d", &new_node->data);
+	new_node->next = top;
+	top = new_node;
+}
+void pop()
+{
+	struct Node *temp;
+	if (top == NULL)
+		printf("No elements in the stack");
+	temp = top;
+	top = top->next;
+	printf("Element %d is deleted", temp->data);
+	//free(temp);
+}
+void display()
+{
+	struct Node *temp;
+	printf("\nThe elements in the list are ");
+	temp = top;
+	while (temp != NULL)
+	{
+		printf("%d ",temp->data);
+		temp = temp->next;
+	}
+}
+
+int main()
+{
+	int i;
+	void* p = malloc(sizeof(int));
+	int* k;
+	k = (int *)p;
+	*k = 10;
+	int* p1 = (int*)calloc(2,sizeof(int));
+	printf("%d is at address %d\n", *p1, p1);
+	printf("%d is at address %d",*k,k);
+	while (1)
+	{
+		printf("\n1:push, 2:pop, 3:display, 4:exit");
+		scanf_s("%d", &i);
+		switch (i)
+		{
+		case 1: push();
+			break;
+		case 2:pop();
+			break;
+		case 3:display();
+			break;
+		default: exit(0);
+		}
+	}
+    return 0;
+}
+
+
