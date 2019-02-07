@@ -1,0 +1,7 @@
+﻿  doublelinkedlist.cpp
+c:\users\lavanya\desktop\datastructures\doublelinkedlist\doublelinkedlist\doublelinkedlist.cpp(57): warning C4101: 'n': unreferenced local variable
+c:\users\lavanya\desktop\datastructures\doublelinkedlist\doublelinkedlist\doublelinkedlist.cpp(149): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'int *'
+c:\users\lavanya\desktop\datastructures\doublelinkedlist\doublelinkedlist\doublelinkedlist.cpp(149): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 3 has type 'node *'
+c:\users\lavanya\desktop\datastructures\doublelinkedlist\doublelinkedlist\doublelinkedlist.cpp(149): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 4 has type 'node *'
+  doublelinkedlist.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\doublelinkedlist\Debug\doublelinkedlist.exe
+  doublelinkedlist.vcxproj -> C:\Users\Lavanya\Desktop\datastructures\doublelinkedlist\Debug\doublelinkedlist.pdb (Partial PDB)
