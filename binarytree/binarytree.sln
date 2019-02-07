@@ -1,31 +1,68 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "binarytree", "binarytree\binarytree.vcxproj", "{DEB4B601-B578-4F9E-8FF1-205CEAE66B41}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DEB4B601-B578-4F9E-8FF1-205CEAE66B41}.Debug|x64.ActiveCfg = Debug|x64
-		{DEB4B601-B578-4F9E-8FF1-205CEAE66B41}.Debug|x64.Build.0 = Debug|x64
-		{DEB4B601-B578-4F9E-8FF1-205CEAE66B41}.Debug|x86.ActiveCfg = Debug|Win32
-		{DEB4B601-B578-4F9E-8FF1-205CEAE66B41}.Debug|x86.Build.0 = Debug|Win32
-		{DEB4B601-B578-4F9E-8FF1-205CEAE66B41}.Release|x64.ActiveCfg = Release|x64
-		{DEB4B601-B578-4F9E-8FF1-205CEAE66B41}.Release|x64.Build.0 = Release|x64
-		{DEB4B601-B578-4F9E-8FF1-205CEAE66B41}.Release|x86.ActiveCfg = Release|Win32
-		{DEB4B601-B578-4F9E-8FF1-205CEAE66B41}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {839BB0CF-3E38-4F0F-AFB4-E979F96E3A0A}
-	EndGlobalSection
-EndGlobal
+#include<stdio.h>
+#include<stdlib.h>
+
+struct tree
+{
+	int data;
+	struct tree *left;
+	struct tree *right;
+}*root,*first=NULL,*temp=NULL,*x;
+
+void create()
+{
+	int n, c = 0,data;
+	struct tree *newnode;
+	printf("Enter no of elements in binary tree");
+	scanf_s("%d", &n);
+	while (c < n)
+	{
+		newnode = (struct tree *)malloc(sizeof(struct tree));
+		printf("\nEnter element");
+		scanf_s("%d", &newnode->data);
+		newnode->left = NULL;
+		newnode->right = NULL;
+		printf("Address of newnode is %d\n", newnode);
+		if (root == NULL)
+		{   
+			root = newnode;
+			first = root;
+	    }
+		else
+		{
+			while (root != NULL)
+			{
+				temp = root;
+				if (newnode->data <= root->data)
+					root = root->left;
+				else
+					root = root->right;
+			}
+			if (temp->data >= newnode->data)
+				temp->left = newnode;
+			else
+				temp->right = newnode;
+		}
+		c++;
+		root = first;
+	}
+}
+
+void display(struct tree *temp1)
+{
+	if (temp1 == NULL)
+		return;
+	display(temp1->left);
+	printf("%d ", temp1->data);
+	display(temp1->right);
+}
+
+int main()
+{
+	printf("create a binary tree");
+	create();
+	printf("The elements present inorder are ");
+	display(first);
+	getchar();
+    return 0;
+}
+
