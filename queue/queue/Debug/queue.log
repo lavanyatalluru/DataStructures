@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  queue.cpp
+c:\users\lavanya\source\repos\queue\queue\queue.cpp(34): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'queue *'
+c:\users\lavanya\source\repos\queue\queue\queue.cpp(34): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'queue *'
+c:\users\lavanya\source\repos\queue\queue\queue.cpp(45): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'queue *'
+c:\users\lavanya\source\repos\queue\queue\queue.cpp(51): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 2 has type 'queue *'
+c:\users\lavanya\source\repos\queue\queue\queue.cpp(59): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'queue *'
+  queue.vcxproj -> C:\Users\Lavanya\source\repos\queue\Debug\queue.exe
